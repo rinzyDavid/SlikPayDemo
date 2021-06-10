@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">SlikPay</string>
+    <string name="powered_by">Powered by</string>
+    <string name="sign_in">Sign in</string>
+    <string name="new_user_lbl">New user ?</string>
+    <string name="social_lbl">---- Or Sign in with ----</string>
+    <string name="make_payment">Make Payment</string>
+    <string name="last_transaction">Last Transaction</string>
+    <string name="payment_api">https://raw.githubusercontent.com</string>
+
+</resources>
