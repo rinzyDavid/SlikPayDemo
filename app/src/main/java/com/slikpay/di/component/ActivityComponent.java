@@ -5,6 +5,12 @@ import com.slikpay.view.payment.PaymentOptionActivity;
 
 import dagger.Subcomponent;
 
+/**
+ * ActivityComponent - Dagger Subcomponent for injecting dependencies into
+ * activities and fragments
+ *
+ */
+
 @Subcomponent
 @ActivityScope
 public interface ActivityComponent {

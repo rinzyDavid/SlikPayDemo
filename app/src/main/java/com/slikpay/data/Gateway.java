@@ -1,5 +1,9 @@
 package com.slikpay.data;
 
+/**
+ *
+ * Pojo class : Gateway class object
+ */
 public class Gateway {
     private String code;
     private String label;

@@ -17,6 +17,11 @@ import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 import retrofit2.converter.scalars.ScalarsConverterFactory;
 
+/**
+ * NetworkModule Class - Dagger module for injecting retrofit dependency
+ * which creates and initializes NetworkApi for making network calls
+ */
+
 @Module
 public class NetworkModule {
 
@@ -27,6 +32,7 @@ public class NetworkModule {
         this.baseUrl=baseUrl;
     }
 
+    //Initializes cache
     @Provides
     @Singleton
     Cache provideOkHttpCache(Application application) {
@@ -52,6 +58,7 @@ public class NetworkModule {
         return client.build();
     }
 
+    //Create NetworkApi class for Making calls
     @Provides
     @Singleton
     NetworkApi provideNetworkApi(Gson gson, OkHttpClient okHttpClient) {

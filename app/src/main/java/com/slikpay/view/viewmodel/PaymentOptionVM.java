@@ -5,6 +5,10 @@ import androidx.lifecycle.ViewModel;
 import com.slikpay.callback.GatewayCallback;
 import com.slikpay.dataManager.GatewayManager;
 
+/**
+ *
+ * Viewmodel object: Holds data for the payment view
+ */
 public class PaymentOptionVM extends ViewModel {
 
 

@@ -14,6 +14,12 @@ import javax.inject.Singleton;
 
 import dagger.Component;
 
+/**
+ * ApplicationComponent : Dagger component used for wiring application
+ * dependencies together
+ *
+ */
+
 @Singleton
 @Component(modules = {ApplicationModule.class, NetworkModule.class, ActivityModule.class})
 public interface ApplicationComponent {

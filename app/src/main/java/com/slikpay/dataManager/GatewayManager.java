@@ -18,6 +18,12 @@ import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.schedulers.Schedulers;
 
+/**
+ * GateWayManager - This class handles and makes the network calls, making use of GatewayRepository class.
+ * Interprets the json result, and returns Gateway Data back.
+ * This class makes use of RxJava to manage threads while making network calls.
+ *
+ */
 @ActivityScope
 public class GatewayManager {
 

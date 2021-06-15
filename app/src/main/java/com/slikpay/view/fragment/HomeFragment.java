@@ -25,6 +25,7 @@ public class HomeFragment extends Fragment {
         return binding.getRoot();
     }
 
+    //Sets up listener for buttons
     private void setupListener(){
         binding.paymentBtn.setOnClickListener(v -> {
             startActivity(new Intent(getActivity(),PaymentOptionActivity.class));

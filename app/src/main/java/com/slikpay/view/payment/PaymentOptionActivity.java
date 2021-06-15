@@ -42,6 +42,7 @@ public class PaymentOptionActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        //Initializes dagger component for injecting dependencies
         appComponent = ((SlikApplication) getApplicationContext())
         .getAppComponent()
                 .activityComponentFactory().create();
@@ -49,9 +50,9 @@ public class PaymentOptionActivity extends AppCompatActivity {
         appComponent.inject(this);
 
         binding = ActivityPaymentOptionBinding.inflate(getLayoutInflater());
-
         setContentView(binding.getRoot());
 
+        //Initializes viewModel class
         vm = ViewModelProviders.of(this).get(PaymentOptionVM.class);
         vm.setGatewayManager(gatewayManager);
 
@@ -90,7 +91,7 @@ public class PaymentOptionActivity extends AppCompatActivity {
     }
 
 
-
+//Loads data from the network using gateway manager.
     private void loadData(){
 
         vm.listGateWays(new GatewayCallback() {
@@ -107,7 +108,7 @@ public class PaymentOptionActivity extends AppCompatActivity {
         });
 
     }
-
+// Initializes the view
     private void setView(List<Gateway> gateways){
         GateWayViewAdapter adapter =  new GateWayViewAdapter(PaymentOptionActivity.this,gateways);
         binding.paymentList.setAdapter(adapter);

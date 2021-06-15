@@ -1,5 +1,9 @@
 package com.slikpay.data;
 
+/**
+ * GatewayLink Pojo class
+ *
+ */
 public class GatewayLink {
     private String logo;
     private String dataSelf;

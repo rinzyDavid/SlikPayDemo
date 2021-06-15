@@ -10,6 +10,12 @@ import javax.inject.Singleton;
 import dagger.Module;
 import dagger.Provides;
 
+/**
+ * Application Module : Dagger module for injecting application context
+ *
+ *
+ */
+
 @Module
 public class ApplicationModule {
 

@@ -26,6 +26,10 @@ import com.slikpay.di.anons.ActivityScope;
 
 import javax.inject.Inject;
 
+/**
+ *
+ * Utility class
+ */
 @ActivityScope
 public class AppUtil {
 

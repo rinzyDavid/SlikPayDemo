@@ -5,6 +5,10 @@ import java.net.SocketTimeoutException;
 
 import retrofit2.HttpException;
 
+/**
+ * Handles all network related errors and translates it to Human readable string
+ *
+ */
 public class ApiException {
 
     private Throwable throwable;

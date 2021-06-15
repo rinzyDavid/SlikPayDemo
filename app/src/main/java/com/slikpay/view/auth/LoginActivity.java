@@ -10,6 +10,11 @@ import com.slikpay.R;
 import com.slikpay.databinding.ActivityLoginBinding;
 import com.slikpay.view.home.HomeActivity;
 
+/**
+ * LoginActivity class: Handles Login UI
+ *
+ */
+
 public class LoginActivity extends AppCompatActivity {
 
     private ActivityLoginBinding binding;

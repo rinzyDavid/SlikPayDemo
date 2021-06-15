@@ -15,6 +15,10 @@ import com.slikpay.databinding.PaymentMethodItemBinding;
 
 import java.util.List;
 
+/**
+ * GatewayViewAdapter class : For handling data recylerview data
+ *
+ */
 public class GateWayViewAdapter extends RecyclerView.Adapter<GateWayViewAdapter.CustomViewHolder> {
 
     private Activity context;
