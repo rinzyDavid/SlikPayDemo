@@ -22,15 +22,16 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.snackbar.Snackbar;
 import com.slikpay.R;
-import com.slikpay.di.anons.ActivityScope;
 
 import javax.inject.Inject;
+
+import dagger.hilt.android.scopes.ActivityScoped;
 
 /**
  *
  * Utility class
  */
-@ActivityScope
+@ActivityScoped
 public class AppUtil {
 
 

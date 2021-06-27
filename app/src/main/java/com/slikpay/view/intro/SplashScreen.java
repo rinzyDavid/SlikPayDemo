@@ -1,13 +1,13 @@
 package com.slikpay.view.intro;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.slikpay.R;
-import com.slikpay.view.auth.LoginActivity;
+import com.slikpay.view.payment.PaymentOptionActivity;
 
 public class SplashScreen extends AppCompatActivity {
 
@@ -34,7 +34,7 @@ public class SplashScreen extends AppCompatActivity {
 
             public void onFinish() {
 
-                startActivity(new Intent(SplashScreen.this, LoginActivity.class));
+                startActivity(new Intent(SplashScreen.this, PaymentOptionActivity.class));
                 overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
                 finish();
             }

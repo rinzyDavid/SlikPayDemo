@@ -1,14 +1,32 @@
 package com.slikpay.data;
 
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
+
 /**
  *
  * Pojo class : Gateway class object
  */
 public class Gateway {
+
+    @SerializedName("code")
+    @Expose
     private String code;
+
+    @SerializedName("label")
+    @Expose
     private String label;
+
+    @SerializedName("method")
+    @Expose
     private String method;
+
+    @SerializedName("grouping")
+    @Expose
     private String grouping;
+
+    @SerializedName("links")
+    @Expose
     private GatewayLink link;
 
     public String getCode() {

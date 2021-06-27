@@ -1,24 +1,21 @@
 package com.slikpay.view.payment;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-import androidx.lifecycle.ViewModelProviders;
-import androidx.recyclerview.widget.DefaultItemAnimator;
-import androidx.recyclerview.widget.LinearLayoutManager;
-
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.DefaultItemAnimator;
+import androidx.recyclerview.widget.LinearLayoutManager;
+
 import com.slikpay.R;
-import com.slikpay.callback.GatewayCallback;
 import com.slikpay.data.Gateway;
-import com.slikpay.dataManager.GatewayManager;
+import com.slikpay.data.GatewayData;
 import com.slikpay.databinding.ActivityPaymentOptionBinding;
-import com.slikpay.di.component.ActivityComponent;
-import com.slikpay.di.component.ApplicationComponent;
+
 import com.slikpay.system.AppUtil;
-import com.slikpay.system.SlikApplication;
 import com.slikpay.view.adapter.GateWayViewAdapter;
 import com.slikpay.view.viewmodel.PaymentOptionVM;
 
@@ -26,35 +23,26 @@ import java.util.List;
 
 import javax.inject.Inject;
 
+import dagger.hilt.android.AndroidEntryPoint;
+
+@AndroidEntryPoint
 public class PaymentOptionActivity extends AppCompatActivity {
 
-    protected ActivityComponent appComponent ;
+    private ActivityPaymentOptionBinding binding; //
 
-    private ActivityPaymentOptionBinding binding;
-    private PaymentOptionVM vm;
-
-    @Inject
-        protected GatewayManager gatewayManager;
-
+     PaymentOptionVM vm;
     @Inject protected AppUtil appUtil;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        //Initializes dagger component for injecting dependencies
-        appComponent = ((SlikApplication) getApplicationContext())
-        .getAppComponent()
-                .activityComponentFactory().create();
-
-        appComponent.inject(this);
-
         binding = ActivityPaymentOptionBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
         //Initializes viewModel class
-        vm = ViewModelProviders.of(this).get(PaymentOptionVM.class);
-        vm.setGatewayManager(gatewayManager);
+        vm = new ViewModelProvider(this).get(PaymentOptionVM.class);
+
 
         binding.paymentList.setLayoutManager(new LinearLayoutManager(this));
         binding.paymentList.setItemAnimator(new DefaultItemAnimator());
@@ -91,21 +79,19 @@ public class PaymentOptionActivity extends AppCompatActivity {
     }
 
 
-//Loads data from the network using gateway manager.
+
     private void loadData(){
 
-        vm.listGateWays(new GatewayCallback() {
-            @Override
-            public void onGatewayList(List<Gateway> gateways) {
-                setView(gateways);
-            }
+        vm.getGateWays().observe(this, gatewayData -> {
 
-            @Override
-            public void onError(String error) {
-
-                appUtil.showErrorSnack(PaymentOptionActivity.this,binding.getRoot(),error);
+            if(gatewayData.getError()!=null){
+                appUtil.showErrorSnack(PaymentOptionActivity.this,binding.getRoot(),gatewayData.getError());
+                return;
             }
+            if(gatewayData.getGateways()!=null)
+                    setView(gatewayData.getGateways());
         });
+
 
     }
 // Initializes the view

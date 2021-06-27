@@ -1,40 +1,25 @@
 package com.slikpay.di.modules;
 
-import android.app.Application;
-import android.content.Context;
+import com.slikpay.dataManager.GatewayServiceImpl;
+import com.slikpay.repository.GatewayService;
 
-import com.slikpay.di.anons.ApplicationContext;
-
-import javax.inject.Singleton;
-
+import dagger.Binds;
 import dagger.Module;
-import dagger.Provides;
+import dagger.hilt.InstallIn;
+import dagger.hilt.android.components.ViewModelComponent;
+import dagger.hilt.android.scopes.ViewModelScoped;
 
 /**
- * Application Module : Dagger module for injecting application context
+ * Application Module : Hilt module for injecting Gateway service dependencies into viewModel
  *
  *
  */
 
 @Module
-public class ApplicationModule {
+@InstallIn(ViewModelComponent.class)
+public abstract class ApplicationModule {
 
-    private final Application mApplication;
+    @Binds
+    public abstract GatewayService bindGatewayService(GatewayServiceImpl gatewayService);
 
-    public ApplicationModule(Application app) {
-        mApplication = app;
-    }
-
-    @Singleton
-    @Provides
-    @ApplicationContext
-    Context provideContext() {
-        return mApplication;
-    }
-
-    @Singleton
-    @Provides
-    Application provideApplication() {
-        return mApplication;
-    }
 }
